@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext,useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalContext';
 import { Transaction } from './Transaction';
 
@@ -6,7 +6,11 @@ import { Transaction } from './Transaction';
 export const TransactionList = () => {
     const context = useContext(GlobalContext);
     // console.log(context);
-    const { transactions }=context;
+    const { transactions,getTransactions }=context;
+    
+    useEffect(() => {
+        getTransactions()
+    }, []);
 
     return (
         <>
